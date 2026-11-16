@@ -206,6 +206,17 @@ a.cc:hover{background:var(--blue-soft);transform:translateY(-4px)}
 /* ---------- criticità (schede girevoli): titolo al posto della citazione ---------- */
 .face .stmt{font:650 24px/1.15 var(--disp);letter-spacing:-.03em;flex:1}
 
+/* ---------- menu: voci visibili fino a 1100px (c34.css le nasconde sotto 1420px) ---------- */
+@media (max-width:1420px) and (min-width:1101px){.links{display:flex}.burger{display:none}}
+
+/* ---------- ritmo verticale più compatto ---------- */
+.sec{padding:96px 0}
+.hero{padding-bottom:56px}
+@media (max-width:720px){.sec{padding:64px 0}}
+
+/* ---------- collage e persone su schermi medi ---------- */
+@media (max-width:1240px){.collage .c-chip{display:none}.people{grid-template-columns:minmax(0,1fr)}}
+
 /* ---------- responsive ---------- */
 @media (max-width:1060px){
   .net.four{grid-template-columns:repeat(2,minmax(0,1fr))}

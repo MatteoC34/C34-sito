@@ -1,0 +1,10 @@
+# Vecchi indirizzi del sito WordPress (redirect permanenti)
+/cfo-esterno/*                 /fractional-cfo/                 301!
+/operazioni-straordinarie/*    /m-and-a/                        301!
+/costituzione-startup/*        /contabile-e-fiscale/#startup    301!
+/finanziamenti-e-bandi/*       /fractional-cfo/                 301!
+/privacy-policy/*              /privacy/                        301
+/thank-you-page/*              /grazie/                         301
+/coming-soon/*                 /                                301
+/category/*                    /risorse/                        301
+/author/*                      /chi-siamo/                      301

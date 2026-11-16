@@ -1,0 +1,5 @@
+# Sito statico: nessuna build, Netlify pubblica la cartella principale del repository.
+# Redirect e intestazioni di sicurezza sono nei file _redirects e _headers
+# (valgono sia con il collegamento a GitHub sia con il caricamento manuale).
+[build]
+  publish = "."

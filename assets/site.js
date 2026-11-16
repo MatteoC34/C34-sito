@@ -35,6 +35,7 @@
     pfn:(d,l)=>d>=l?'PFN di '+eur(d-l):'Liquidità netta di '+eur(l-d),
     post:(p,i)=>p+i>0?'Post-money di '+eur(p+i)+' · quota investitore '+pct(i/(p+i)):'Inserire i valori',
     arr:m=>'ARR di '+eur(m*12),
+    dil:(q,p,i)=>p+i>0?'Quota dopo il round '+nf(1).format(q*p/(p+i))+'%':'Inserire i valori',
     scost:(b,c)=>'Scostamento '+(c>=b?'+ ':'− ')+eur(Math.abs(c-b))+(b?' ('+(c>=b?'+':'−')+pct(Math.abs(c-b)/b)+')':'')
   };
   document.querySelectorAll('.dz-calc').forEach(box=>{const ins=[...box.querySelectorAll('input')],out=box.querySelector('output'),f=F[box.dataset.calc];if(!f)return;
@@ -42,8 +43,8 @@
 })();
 
 const glNorm=s=>s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'');
-/* la ricerca trova i termini a inizio parola: «iva» trova IVA ma non «attiva» */
-const glMatch=(text,t)=>!t||new RegExp('(^|[^a-z0-9])'+t.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')).test(glNorm(text));
+/* la ricerca trova i termini a inizio parola («iva» trova IVA ma non «attiva»); fino a 3 lettere cerca la parola intera (sigle) */
+const glMatch=(text,t)=>!t||new RegExp('(^|[^a-z0-9])'+t.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+(t.length<=3?'($|[^a-z0-9])':'')).test(glNorm(text));
 
 /* glossario: dizionario a due pannelli */
 (function(){
@@ -51,9 +52,15 @@ const glMatch=(text,t)=>!t||new RegExp('(^|[^a-z0-9])'+t.replace(/[.*+?^${}()|[\
   const links=[...dz.querySelectorAll('.dz-link')],panels=[...dz.querySelectorAll('.dz-panel')],groups=[...dz.querySelectorAll('.dz-group')];
   const q=document.getElementById('gl-q'),count=document.getElementById('gl-count'),empty=document.getElementById('gl-empty'),main=document.getElementById('dz-main');
   const narrow=()=>matchMedia('(max-width:1060px)').matches;
+  const areaBtns=[...dz.querySelectorAll('.dz-areas button')];let area=(areaBtns.find(b=>b.getAttribute('aria-pressed')==='true')||{}).dataset?.area;
+  const setArea=a=>{if(!areaBtns.length)return;area=a;areaBtns.forEach(b=>b.setAttribute('aria-pressed',b.dataset.area===a));if(!q.value.trim())groups.forEach(g=>g.hidden=g.dataset.area!==a)};
+  areaBtns.forEach(b=>b.addEventListener('click',()=>{q.value='';links.forEach(l=>l.parentElement.hidden=false);setArea(b.dataset.area);
+    const g=groups.find(x=>x.dataset.area===b.dataset.area),l=g&&g.querySelector('.dz-link');if(l){const id=l.getAttribute('href').slice(1);show(id);history.replaceState(null,'','#'+id)}
+    count.textContent=links.length+' voci';empty.hidden=true}));
   const show=id=>{const p=document.getElementById(id);if(!p||!p.classList.contains('dz-panel'))return false;
     panels.forEach(x=>x.classList.toggle('on',x===p));links.forEach(l=>l.classList.toggle('on',l.getAttribute('href')==='#'+id));
     const act=links.find(l=>l.classList.contains('on')),list=dz.querySelector('.dz-list');
+    if(act&&areaBtns.length&&!q.value.trim()){const g=act.closest('.dz-group');if(g&&g.dataset.area!==area)setArea(g.dataset.area)}
     if(act&&list&&!narrow()){const y=act.getBoundingClientRect().top-list.getBoundingClientRect().top+list.scrollTop;if(y<list.scrollTop||y>list.scrollTop+list.clientHeight-48)list.scrollTop=y-list.clientHeight/3}
     return true};
   const reveal=()=>{const t=(narrow()?main:dz).getBoundingClientRect().top;if(t<0||narrow())(narrow()?main:dz).scrollIntoView({behavior:'smooth',block:'start'})};
@@ -64,7 +71,8 @@ const glMatch=(text,t)=>!t||new RegExp('(^|[^a-z0-9])'+t.replace(/[.*+?^${}()|[\
   const cur=panels.find(p=>p.classList.contains('on'));if(cur)show(cur.id);fromHash();
   q.addEventListener('input',()=>{const t=glNorm(q.value.trim());let n=0;
     links.forEach(l=>{const ok=glMatch(l.dataset.s,t);l.parentElement.hidden=!ok;if(ok)n++});
-    groups.forEach(g=>g.hidden=!g.querySelector('li:not([hidden])'));
+    groups.forEach(g=>g.hidden=!g.querySelector('li:not([hidden])')||(areaBtns.length&&!t&&g.dataset.area!==area));
     count.textContent=n+(n===1?' voce':' voci');empty.hidden=n>0});
+  setArea(area);
   q.addEventListener('keydown',e=>{if(e.key!=='Enter')return;const f=links.find(l=>!l.parentElement.hidden);if(f){e.preventDefault();const id=f.getAttribute('href').slice(1);show(id);history.replaceState(null,'','#'+id);reveal()}});
 })();

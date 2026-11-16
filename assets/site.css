@@ -269,7 +269,34 @@ a.cc:hover{background:var(--blue-soft);transform:translateY(-4px)}
 .dz-rel a{padding:8px 13px;border-radius:99px;background:var(--soft);font-size:14px;font-weight:600;color:var(--ink);transition:background .2s}
 .dz-rel a:hover{background:var(--blue-soft);color:var(--blue-2)}
 .dz-area{align-self:flex-start}
+/* schede d'area (varianti con elenco per area) */
+.dz-areas{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:10px}
+.dz-areas button{border:0;cursor:pointer;display:flex;align-items:center;gap:8px;padding:10px 12px;border-radius:14px;background:#fff;font:600 13.5px var(--sans);color:var(--ink-2);text-align:left;transition:background .2s,color .2s}
+.dz-areas button small{margin-left:auto;font-weight:600;color:var(--muted)}
+.dz-areas button[aria-pressed=true]{background:var(--ink);color:#fff}
+.dz-areas button[aria-pressed=true] small{color:#C6CBDA}
+.dz--tabs .dz-h{display:none}
+.dz--tabs .dz-side{max-height:none}
+.dz--tabs .dz-list{max-height:none;overflow:visible}
+/* variante con indice orizzontale */
+.dz--top{grid-template-columns:minmax(0,1fr)}
+.dz--top .dz-side{position:static;max-height:none;padding:18px}
+.dz--top .dz-areas{grid-template-columns:repeat(4,minmax(0,1fr))}
+.dz--top .dz-search{max-width:560px}
+.dz--top .dz-h{display:none}
+.dz--top .dz-list{overflow:visible;margin-top:12px}
+.dz--top .dz-group{padding:0}
+.dz--top .dz-list ul{display:flex;flex-wrap:wrap;gap:6px}
+.dz--top .dz-link{display:inline-block;padding:7px 13px;border-radius:99px;background:#fff;font-size:14px}
+.dz--top .dz-link:hover{background:var(--blue-soft)}
+.dz--top .dz-link.on{background:var(--ink);color:#fff}
+.dz--top.searching .dz-h,.dz--top .dz-group+.dz-group:not([hidden]){margin-top:10px}
 
+
+/* ---------- barra dei prototipi (pagine /prove/) ---------- */
+.proto{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;margin-bottom:18px;padding:12px 16px;border-radius:16px;background:var(--coral-soft);color:var(--coral-2);font-size:14px;font-weight:600}
+.proto a{color:var(--ink);text-decoration:underline;text-underline-offset:3px}
+.proto a[aria-current]{text-decoration:none;background:#fff;padding:3px 10px;border-radius:99px}
 
 /* ---------- link utili ---------- */
 .lk-group{display:grid;grid-template-columns:240px minmax(0,1fr);gap:24px;padding:28px 0;border-top:1px solid var(--line)}
@@ -289,6 +316,8 @@ a.cc:hover{background:var(--blue-soft);transform:translateY(-4px)}
   .dz-side{position:static;max-height:none}
   .dz-list{max-height:440px}
   .dz-main{order:-1}
+  .dz--top .dz-main{order:0}
+  .dz--top .dz-areas{grid-template-columns:1fr 1fr}
   .lk-group{grid-template-columns:minmax(0,1fr);gap:14px}
 }
 @media (max-width:720px){

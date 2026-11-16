@@ -13,7 +13,7 @@ Sito statico (HTML, CSS e JavaScript, senza build) pubblicato con Netlify. Usa l
 | `/chi-siamo/` | `chi-siamo/index.html` | Lo Studio: team, principi di lavoro, partnership, sede |
 | `/risorse/` | `risorse/index.html` | Approfondimenti (articoli), con filtro per argomento. Con Glossario e Link utili forma la voce di menu "Risorse" |
 | `/<slug-articolo>/` | cartella omonima | 23 articoli migrati dal vecchio blog, stessi indirizzi |
-| `/glossario/` | `glossario/index.html` | Glossario d'impresa a due pannelli: 76 voci raggruppate per area, ricerca, riferimenti normativi, voci collegate e calcolatori per gli indicatori finanziari |
+| `/glossario/` | `glossario/index.html` | Glossario d'impresa: 101 voci in cinque aree (contabile e fiscale, Fractional CFO, M&A, startup e PMI innovative, clausole di investimento), indice per area, ricerca con sinonimi, scheda con riferimento normativo, voci collegate e calcolatori |
 | `/link-utili/` | `link-utili/index.html` | Strumenti di calcolo, guide per i Clienti, conti correnti, servizi dello Studio |
 | `/contatti/` | `contatti/index.html` | Recapiti, modulo, sede |
 | `/privacy/`, `/cookie/` | cartelle omonime | Informative |
@@ -21,7 +21,7 @@ Sito statico (HTML, CSS e JavaScript, senza build) pubblicato con Netlify. Usa l
 
 ## Come si modifica
 
-- Glossario: ogni voce è un `<article class="dz-panel">` in `glossario/index.html`, con il relativo link nell'elenco `.dz-list` (raggruppato per area). I calcolatori (`data-calc`) usano le formule in `assets/site.js`. Aggiornare anche i dati strutturati in fondo alla pagina.
+- Glossario: ogni voce è un `<article class="dz-panel">` in `glossario/index.html`, con il relativo link nell'indice `.dz-list` (un gruppo per area, `data-area`; i sinonimi di ricerca sono nell'attributo `data-s`). I calcolatori (`data-calc`) usano le formule in `assets/site.js`. Aggiornare anche i dati strutturati in fondo alla pagina.
 
 Ogni pagina è un file HTML completo: si modifica direttamente, anche dall'editor di GitHub. Menu e footer sono ripetuti in ogni pagina: se cambiano, vanno aggiornati in tutti i file.
 

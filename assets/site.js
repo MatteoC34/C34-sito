@@ -68,22 +68,3 @@ const glMatch=(text,t)=>!t||new RegExp('(^|[^a-z0-9])'+t.replace(/[.*+?^${}()|[\
     count.textContent=n+(n===1?' voce':' voci');empty.hidden=n>0});
   q.addEventListener('keydown',e=>{if(e.key!=='Enter')return;const f=links.find(l=>!l.parentElement.hidden);if(f){e.preventDefault();const id=f.getAttribute('href').slice(1);show(id);history.replaceState(null,'','#'+id);reveal()}});
 })();
-
-/* glossario, prototipi 2 e 3: ricerca, filtro per area, apertura della voce dal link diretto */
-(function(){
-  document.querySelectorAll('[data-gl-search]').forEach(q=>{
-    const root=document.getElementById(q.dataset.glSearch),wrap=q.closest('.g2,.g3');if(!root)return;
-    const rows=[...root.querySelectorAll('[data-s]')],count=wrap.querySelector('[data-gl-count]'),empty=wrap.querySelector('[data-gl-empty]');
-    let area='*';
-    const run=()=>{const t=glNorm(q.value.trim());let n=0;root.classList.toggle('searching',!!t);
-      rows.forEach(r=>{const ok=(area==='*'||r.dataset.area===area)&&glMatch(r.dataset.s,t);r.hidden=!ok;if(ok)n++});
-      count.textContent=n+(n===1?' voce':' voci');if(empty)empty.hidden=n>0};
-    q.addEventListener('input',run);
-    wrap.querySelectorAll('[data-g3-area]').forEach((b,_,all)=>b.addEventListener('click',()=>{area=b.dataset.g3Area;all.forEach(x=>x.setAttribute('aria-pressed',x===b));run()}));
-  });
-  const open=()=>{const id=decodeURIComponent(location.hash.slice(1));const el=id&&document.getElementById(id);if(!el)return;
-    if(el.tagName==='DETAILS'){const panel=el.closest('[role=tabpanel]');if(panel&&panel.hidden){const tab=document.querySelector('[aria-controls="'+panel.id+'"]');tab&&tab.click()}el.open=true}
-    if(el.classList.contains('g3-row')){el.classList.add('hit');setTimeout(()=>el.classList.remove('hit'),1600)}
-    requestAnimationFrame(()=>el.scrollIntoView({block:'center'}))};
-  addEventListener('hashchange',open);if(document.querySelector('.g2,.g3'))open();
-})();

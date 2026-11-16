@@ -13,7 +13,7 @@ Sito statico (HTML, CSS e JavaScript, senza build) pubblicato con Netlify. Usa l
 | `/chi-siamo/` | `chi-siamo/index.html` | Lo Studio: team, principi di lavoro, partnership, sede |
 | `/risorse/` | `risorse/index.html` | Approfondimenti (articoli), con filtro per argomento. Con Glossario e Link utili forma la voce di menu "Risorse" |
 | `/<slug-articolo>/` | cartella omonima | 23 articoli migrati dal vecchio blog, stessi indirizzi |
-| `/glossario/` | `glossario/index.html` | Glossario d'impresa a due pannelli: 44 voci raggruppate per area, ricerca, riferimenti normativi, voci collegate e calcolatori per gli indicatori finanziari |
+| `/glossario/` | `glossario/index.html` | Glossario d'impresa a due pannelli: 54 voci raggruppate per area, ricerca, riferimenti normativi, voci collegate e calcolatori per gli indicatori finanziari |
 | `/link-utili/` | `link-utili/index.html` | Strumenti di calcolo, guide per i Clienti, conti correnti, servizi dello Studio |
 | `/contatti/` | `contatti/index.html` | Recapiti, modulo, sede |
 | `/privacy/`, `/cookie/` | cartelle omonime | Informative |

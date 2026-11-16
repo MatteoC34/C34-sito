@@ -108,6 +108,8 @@ a.pt:hover{border-color:var(--ink);transform:translateY(-4px)}
 .art .prose ol{padding-left:22px;margin-top:10px;list-style:decimal}
 .art .prose .tip{margin:26px 0;padding:22px 26px;border-radius:20px;background:var(--blue-soft)}
 .art .prose .tip b{color:var(--blue-2)}
+.art-h1{max-width:22ch;font-size:clamp(36px,4.8vw,68px)!important;line-height:1!important}
+.art .prose .note-upd{background:var(--coral-soft);border:1px solid #FFD3C6}
 .art-meta{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:26px;font-size:14px;color:var(--muted)}
 .art-meta b{color:var(--ink);font-weight:600}
 .aside{position:sticky;top:110px;display:grid;gap:12px}

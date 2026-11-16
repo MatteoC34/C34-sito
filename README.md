@@ -47,7 +47,7 @@ Il modulo usa Netlify Forms (`name="contatto"`). Le richieste sono consultabili 
 
 ## Da completare
 
-- [ ] Migrare gli altri 22 articoli del blog (le schede in `/risorse/` puntano già agli indirizzi definitivi)
+- [x] Migrazione dei 23 articoli del blog (stessi indirizzi del vecchio sito)
 - [ ] `assets/og.png`, immagine di anteprima per i social (1200×630)
 - [ ] Revisione dei testi, delle domande frequenti e delle informative da parte dello Studio
 - [ ] Collegamento del dominio www.consulting34.com

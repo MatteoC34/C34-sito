@@ -18,7 +18,7 @@
    qui si adegua il testo del pulsante al registro del sito dello Studio */
 (function(){
   const panel=document.getElementById('audPanel');if(!panel)return;
-  const fix=()=>panel.querySelectorAll('a.btn-blue').forEach(a=>{if(/Parliamone/.test(a.textContent))a.innerHTML='Richieda un colloquio <span class="arr">→</span>'});
+  const fix=()=>panel.querySelectorAll('a.btn-blue').forEach(a=>{if(/Parliamone/.test(a.textContent))a.innerHTML='Richiedi una call <span class="arr">→</span>'});
   new MutationObserver(fix).observe(panel,{childList:true});fix();
 })();
 

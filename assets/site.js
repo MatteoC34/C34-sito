@@ -43,8 +43,11 @@
 })();
 
 const glNorm=s=>s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'');
-/* la ricerca trova i termini a inizio parola («iva» trova IVA ma non «attiva»); fino a 3 lettere cerca la parola intera (sigle) */
-const glMatch=(text,t)=>!t||new RegExp('(^|[^a-z0-9])'+t.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+(t.length<=3?'($|[^a-z0-9])':'')).test(glNorm(text));
+/* la ricerca trova i termini a inizio parola («iva» trova IVA ma non «attiva»); fino a 3 lettere cerca la parola intera (sigle).
+   Con più parole devono esserci tutte, in qualsiasi ordine; si ignorano quelle di una o due lettere («di», «e») e,
+   oltre le 4 lettere, la vocale finale, così singolare e plurale si equivalgono («categoria» trova «categorie»). */
+const glMatch=(text,t)=>{if(!t)return true;const s=glNorm(text);let ws=t.split(/[^a-z0-9.&]+/).filter(Boolean);if(ws.length>1)ws=ws.filter(w=>w.length>2);
+  return ws.every(w=>{const st=w.length>4?w.replace(/[aeiou]$/,''):w;return new RegExp('(^|[^a-z0-9])'+st.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+(w.length<=3?'($|[^a-z0-9])':'')).test(s)})};
 
 /* glossario: dizionario a due pannelli */
 (function(){

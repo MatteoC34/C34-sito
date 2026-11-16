@@ -21,3 +21,18 @@
   const fix=()=>panel.querySelectorAll('a.btn-blue').forEach(a=>{if(/Parliamone/.test(a.textContent))a.innerHTML='Richieda un colloquio <span class="arr">→</span>'});
   new MutationObserver(fix).observe(panel,{childList:true});fix();
 })();
+
+/* glossario: ricerca e filtro per area */
+(function(){
+  const q=document.getElementById('gl-q'),list=document.getElementById('gl-list');if(!q||!list)return;
+  const items=[...list.querySelectorAll('.gl-item')],groups=[...list.querySelectorAll('.gl-group')],btns=[...document.querySelectorAll('[data-glf] button')];
+  const count=document.getElementById('gl-count'),empty=document.getElementById('gl-empty');
+  let area='*';
+  const norm=s=>s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'');
+  const run=()=>{const t=norm(q.value.trim());let n=0;
+    items.forEach(i=>{const ok=(area==='*'||i.dataset.area===area)&&(!t||norm(i.dataset.s).includes(t));i.hidden=!ok;if(ok)n++});
+    groups.forEach(g=>g.hidden=!g.querySelector('.gl-item:not([hidden])'));
+    count.textContent=n+(n===1?' voce':' voci');empty.hidden=n>0};
+  q.addEventListener('input',run);
+  btns.forEach(b=>b.addEventListener('click',()=>{area=b.dataset.area;btns.forEach(x=>x.setAttribute('aria-pressed',x===b));run()}));
+})();

@@ -11,13 +11,17 @@ Sito statico (HTML, CSS e JavaScript, senza build) pubblicato con Netlify. Usa l
 | `/fractional-cfo/` | `fractional-cfo/index.html` | Area 02: Fractional CFO e controllo di gestione |
 | `/m-and-a/` | `m-and-a/index.html` | Area 03: M&A e operazioni straordinarie |
 | `/chi-siamo/` | `chi-siamo/index.html` | Lo Studio: team, principi di lavoro, partnership, sede |
-| `/risorse/` | `risorse/index.html` | Approfondimenti, con filtro per argomento |
-| `/bilancio-desercizio-guida-completa-per-startup-e-pmi/` | stessa cartella | Modello di pagina articolo |
+| `/risorse/` | `risorse/index.html` | Approfondimenti (articoli), con filtro per argomento. Con Glossario e Link utili forma la voce di menu "Risorse" |
+| `/<slug-articolo>/` | cartella omonima | 23 articoli migrati dal vecchio blog, stessi indirizzi |
+| `/glossario/` | `glossario/index.html` | Glossario d'impresa: 44 voci con ricerca, filtro per area, indice alfabetico, formule ed esempi, riferimenti normativi |
+| `/link-utili/` | `link-utili/index.html` | Strumenti di calcolo, guide per i Clienti, conti correnti, servizi dello Studio |
 | `/contatti/` | `contatti/index.html` | Recapiti, modulo, sede |
 | `/privacy/`, `/cookie/` | cartelle omonime | Informative |
 | `/grazie/`, `/404` | `grazie/index.html`, `404.html` | Conferma di invio del modulo e pagina non trovata |
 
 ## Come si modifica
+
+- Glossario: ogni voce è un blocco `<article class="gl-item">` in `glossario/index.html`, in ordine alfabetico. L'attributo `data-area` (fiscale, cfo, ma, startup) collega la voce al filtro; `data-s` contiene il testo usato dalla ricerca. Aggiornare anche i dati strutturati in fondo alla pagina.
 
 Ogni pagina è un file HTML completo: si modifica direttamente, anche dall'editor di GitHub. Menu e footer sono ripetuti in ogni pagina: se cambiano, vanno aggiornati in tutti i file.
 

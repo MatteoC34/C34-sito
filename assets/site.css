@@ -219,6 +219,80 @@ a.cc:hover{background:var(--blue-soft);transform:translateY(-4px)}
 /* ---------- collage e persone su schermi medi ---------- */
 @media (max-width:1240px){.collage .c-chip{display:none}.people{grid-template-columns:minmax(0,1fr)}}
 
+
+/* ---------- risorse: barra di passaggio tra Approfondimenti, Glossario, Link utili ---------- */
+.subnav{display:inline-flex;gap:4px;padding:5px;border-radius:99px;background:var(--soft)}
+.subnav a{padding:9px 16px;border-radius:99px;font-size:14.5px;font-weight:600;color:var(--ink-2);transition:background .2s,color .2s}
+.subnav a:hover{background:#fff}
+.subnav a[aria-current=page]{background:var(--ink);color:#fff}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* ---------- glossario ---------- */
+.gl-tools{position:sticky;top:76px;z-index:20;background:rgba(255,255,255,.94);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);padding:16px 0 14px;margin-bottom:12px;border-bottom:1px solid var(--line);display:grid;gap:12px}
+.gl-search{display:flex;align-items:center;gap:14px;background:var(--soft);border-radius:18px;padding:6px 18px 6px 6px}
+.gl-search input{flex:1;min-width:0;border:0;background:#fff;border-radius:14px;padding:14px 16px;font:500 16px var(--sans);color:var(--ink);border:1.5px solid transparent}
+.gl-search input:focus{outline:none;border-color:var(--blue)}
+.gl-search span{font-size:13.5px;font-weight:600;color:var(--muted);white-space:nowrap;font-variant-numeric:tabular-nums}
+.gl-tools .filters{margin:0}
+.gl-az{display:flex;flex-wrap:wrap;gap:4px}
+.gl-az a,.gl-az span{display:inline-grid;place-items:center;min-width:30px;height:30px;border-radius:9px;font:700 13.5px var(--disp)}
+.gl-az a{background:var(--blue-soft);color:var(--blue)}
+.gl-az a:hover{background:var(--blue);color:#fff}
+.gl-az span{color:var(--line)}
+.gl-group{display:grid;grid-template-columns:72px minmax(0,1fr);gap:20px;padding:26px 0;border-top:1px solid var(--line);scroll-margin-top:260px}
+.gl-group:first-child{border-top:0}
+.gl-letter{font:800 52px/1 var(--disp);letter-spacing:-.05em;color:var(--blue);position:sticky;top:270px;align-self:start}
+.gl-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.gl-item{border-radius:24px;background:var(--soft);padding:24px;display:flex;flex-direction:column;gap:10px;min-width:0;scroll-margin-top:270px;transition:box-shadow .3s}
+.gl-item:target{box-shadow:0 0 0 2px var(--blue)}
+.gl-top{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.gl-tag{font-size:12px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;padding:5px 10px;border-radius:99px;background:#fff}
+.gl-fiscale{color:var(--ink-2)}.gl-cfo{color:var(--blue)}.gl-ma{color:var(--coral-2)}.gl-startup{color:var(--green)}
+.gl-anchor{font:700 15px var(--disp);color:var(--muted);opacity:.5;padding:2px 6px;border-radius:8px}
+.gl-anchor:hover{opacity:1;color:var(--blue);background:#fff}
+.gl-item h3{font-size:24px;line-height:1.1}
+.gl-item>p{font-size:15px;color:var(--ink-2)}
+.gl-formula{background:var(--ink);color:#fff;border-radius:16px;padding:14px 16px;display:grid;gap:4px}
+.gl-formula span{font-size:11.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#9FB2FF}
+.gl-formula b{font:600 16px/1.35 var(--disp);letter-spacing:-.01em}
+.gl-formula small{font-size:13.5px;color:#C6CBDA}
+.gl-ref{font-size:13.5px;color:var(--ink-2);display:flex;gap:10px;flex-wrap:wrap;align-items:baseline}
+.gl-ref span{font-size:11.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.gl-go{margin-top:auto;padding-top:4px;font-size:14px;font-weight:600;color:var(--blue)}
+.gl-go b{display:inline-block;transition:transform .25s}
+.gl-go:hover b{transform:translateX(4px)}
+.gl-item[hidden],.gl-group[hidden]{display:none}
+.gl-empty{padding:40px 0;font-size:16px;color:var(--ink-2)}
+.gl-empty a{color:var(--blue);font-weight:600;text-decoration:underline;text-underline-offset:3px}
+
+/* ---------- link utili ---------- */
+.lk-group{display:grid;grid-template-columns:240px minmax(0,1fr);gap:24px;padding:28px 0;border-top:1px solid var(--line)}
+.lk-group:first-child{border-top:0}
+.lk-group h2{font-size:24px;line-height:1.1;letter-spacing:-.025em}
+.lk-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.lk{border-radius:24px;background:var(--soft);padding:24px;display:flex;flex-direction:column;gap:8px;min-width:0;transition:background .25s,transform .3s var(--ease)}
+.lk:hover{background:var(--blue-soft);transform:translateY(-4px)}
+.lk-k{font-size:12px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+.lk b{font:700 21px/1.15 var(--disp);letter-spacing:-.02em}
+.lk span:not(.lk-k){font-size:14.5px;color:var(--ink-2)}
+.lk i{margin-top:auto;padding-top:6px;font-style:normal;font-size:14px;font-weight:600;color:var(--blue)}
+
+@media (max-width:1060px){
+  .gl-grid,.lk-grid{grid-template-columns:minmax(0,1fr)}
+  .lk-group{grid-template-columns:minmax(0,1fr);gap:14px}
+}
+@media (max-width:720px){
+  .gl-tools{position:static}
+  .gl-tools .filters{flex-wrap:nowrap;overflow-x:auto;padding-bottom:4px}
+  .gl-tools .filters button{white-space:nowrap}
+  .gl-group,.gl-item{scroll-margin-top:90px}
+  .gl-group{grid-template-columns:minmax(0,1fr);gap:10px}
+  .gl-letter{position:static;font-size:40px}
+  .gl-az a,.gl-az span{min-width:26px;height:26px;font-size:12.5px}
+  .subnav{display:flex;width:100%;overflow-x:auto}
+  .subnav a{white-space:nowrap}
+}
+
 /* ---------- responsive ---------- */
 @media (max-width:1060px){
   .net.four{grid-template-columns:repeat(2,minmax(0,1fr))}

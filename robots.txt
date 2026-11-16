@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /prove/
 
 Sitemap: https://www.consulting34.com/sitemap.xml
